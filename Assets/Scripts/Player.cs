@@ -33,6 +33,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * axis.x * moveSpeed * Time.deltaTime);
+        if(JumpButton)
+        {
+            rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
 
     }
 
@@ -44,10 +48,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(JumpButton)
-        {
-            rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
+        
     }
 
     Vector2 axis => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
