@@ -33,8 +33,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * axis.x * moveSpeed * Time.deltaTime);
-        
-
+        if(jumpButton && IsGrounding)
+        {
+            rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
 
     void LateUpdate()
@@ -47,10 +49,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(jumpButton && IsGrounding)
-        {
-            rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
         //anim.SetFloat("velocityY", rb2D.valocity.normalized.y);
         //anim.SetBool("grounding", IsGrounding);
     }
