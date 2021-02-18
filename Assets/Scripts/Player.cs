@@ -6,15 +6,20 @@ public class Player : MonoBehaviour
 {
     [SerializeField, Range(0.1f, 10f)]
     float moveSpeed = 1f;
+    
     SpriteRenderer spr;
     Animator anim;
-    [SerializeField, Range(0.1f, 15f)]
-    float jumpForce;
     Rigidbody2D rb2D;
+    
+    [SerializeField, Range(0.1f, 15f)]
+    float jumpForce = 7f;
+    
     [SerializeField]
     Color rayColor = Color.magenta;
+    
     [SerializeField, Range(0.1f, 15f)]
     float rayDistance = 5f;
+    
     [SerializeField]
     LayerMask groundLayer;
 
@@ -39,7 +44,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(jumpButton && IsGrounding)
+        if(JumpButton)
         {
             rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -48,10 +53,11 @@ public class Player : MonoBehaviour
     Vector2 axis => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
     bool flipSprite => axis.x > 0 ? false : axis.x < 0 ? true : spr.flipX;
-    bool jumpButton => Input.GetButtonDown("Jump");
+    bool JumpButton {
+        get => Input.GetButtonDown("Jump");
+    } 
 
-    bool IsGrounding => Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer);
-
+    bool IsGrounding => Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer); 
 
     void OnDrawGizmosSelected()
     {
