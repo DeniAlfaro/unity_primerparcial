@@ -33,10 +33,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * axis.x * moveSpeed * Time.deltaTime);
-        if(JumpButton)
-        {
-            rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
+        
 
     }
 
@@ -44,19 +41,25 @@ public class Player : MonoBehaviour
     {
         spr.flipX = flipSprite;
         anim.SetFloat("moveX", Mathf.Abs(axis.x));
+        anim.SetFloat("velocityY", Mathf.Abs(axis.y));
+        
     }
 
     void FixedUpdate()
     {
-        
+        if(jumpButton && IsGrounding)
+        {
+            rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+        //anim.SetFloat("velocityY", rb2D.valocity.normalized.y);
+        //anim.SetBool("grounding", IsGrounding);
     }
 
     Vector2 axis => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
     bool flipSprite => axis.x > 0 ? false : axis.x < 0 ? true : spr.flipX;
-    bool JumpButton {
-        get => Input.GetButtonDown("Jump");
-    } 
+
+    bool jumpButton  => Input.GetButtonDown("Jump");
 
     bool IsGrounding => Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer); 
 

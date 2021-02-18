@@ -310,7 +310,7 @@ MonoBehaviour:
   moveSpeed: 5.13
   jumpForce: 5
   rayColor: {r: 1, g: 0, b: 1, a: 1}
-  rayDistance: 0.35
+  rayDistance: 0.32
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -348,8 +348,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020650148, y: 0.06926668}
-  m_Size: {x: 0.84, y: 0.71}
+  m_Offset: {x: 0.01820016, y: 0.11883381}
+  m_Size: {x: 0.8105273, y: 0.8105275}
   m_Direction: 0
 --- !u!1 &223773373 stripped
 GameObject:
