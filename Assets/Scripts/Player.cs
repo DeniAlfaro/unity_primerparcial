@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         if(jumpButton && IsGrounding)
         {
             rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            anim.SetTrigger("jump");
         }
     }
 
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
     {
         spr.flipX = flipSprite;
         anim.SetFloat("moveX", Mathf.Abs(axis.x));
-        anim.SetFloat("velocityY", Mathf.Abs(axis.y));
+        anim.SetBool("grounding", IsGrounding);
         
     }
 
