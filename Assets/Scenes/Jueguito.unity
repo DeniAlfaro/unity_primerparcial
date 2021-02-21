@@ -540,6 +540,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  gameOverScreen: {fileID: 0}
 --- !u!50 &202289525
 Rigidbody2D:
   serializedVersion: 4
@@ -709,6 +710,7 @@ GameObject:
   - component: {fileID: 309023200}
   - component: {fileID: 309023203}
   - component: {fileID: 309023204}
+  - component: {fileID: 309023205}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -847,6 +849,20 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &309023205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309023199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c9fc1a23a45fd4890c2b2ea9d17412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 1100743347}
+  GameOverScreen: {fileID: 1345363149}
 --- !u!1001 &417114666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1025,7 +1041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015259, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -297.9152, y: -69.5461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740214123
@@ -5796,6 +5812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2f3f6713f7f1c459c62cb0107065be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsText: {fileID: 485239005}
 --- !u!114 &1345363150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6465,6 +6482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 1100743347}
+  GameOverScreen: {fileID: 0}
 --- !u!4 &1614064493
 Transform:
   m_ObjectHideFlags: 0
@@ -6494,7 +6512,7 @@ GameObject:
   - component: {fileID: 1736678010}
   m_Layer: 0
   m_Name: Pulpo2_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,6 +11,17 @@ public class GameManager : MonoBehaviour
     Score score;
 
     public Score Score { get => score; }
+
+    //GAME OVER SCREEN
+    public GameOverScreen GameOverScreen;
+    int maxPlatform = 0;
+
+    public void GameOver()
+    {
+        
+        GameOverScreen.SetUp(maxPlatform);
+
+    }
     void Awake()
     {
         

@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     LayerMask groundLayer;
 
+
+    public GameOverScreen gameOverScreen;
+
     void Awake()
     {
         spr = GetComponent<SpriteRenderer>();
@@ -80,6 +83,11 @@ public class Player : MonoBehaviour
             GameManager.instance.Score.AddPoins(shell.Points);
             Destroy(other.gameObject);
             Debug.Log(shell.Points);
+        }
+
+        if(other.CompareTag("Enemy"))
+        {    
+             //GameOverScreen.SetUp();
         }
     }
 }

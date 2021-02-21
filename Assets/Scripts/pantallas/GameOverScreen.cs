@@ -5,10 +5,19 @@ using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public void Setup(/*/int score*/)
+    [SerializeField]
+    Text pointsText;
+
+    int points = 0;
+
+    
+    public void SetUp(int score)
     {
-        //public Text pointsText;
-        //gameObject.SetActive(true);
-        //pointsText = score.ToString() + " POINTS";
+        points += score;
+        pointsText.gameObject.SetActive(true);
+        pointsText.text = $"Score: {points} points";
+
     }
+
+    
 }
