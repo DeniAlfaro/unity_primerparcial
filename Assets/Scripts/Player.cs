@@ -67,4 +67,15 @@ public class Player : MonoBehaviour
         Gizmos.color = rayColor;
         Gizmos.DrawRay(transform.position, Vector2.down * rayDistance);
     }
+    ///SHELLSpoints
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.CompareTag("shell"))
+        {
+            Shells shell = other.GetComponent<Shells>();
+            Shells shell2 = other.GetComponent<Shells>();
+            Destroy(other.gameObject);
+            Debug.Log(shell.Points);
+        }
+    }
 }
