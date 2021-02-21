@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(Rigidbody2D))]
+
+
 public class Player : MonoBehaviour
 {
     [SerializeField, Range(0.1f, 10f)]
@@ -73,7 +77,7 @@ public class Player : MonoBehaviour
         if(other.CompareTag("shell"))
         {
             Shells shell = other.GetComponent<Shells>();
-            Shells shell2 = other.GetComponent<Shells>();
+            GameManager.instance.Score.AddPoins(shell.Points);
             Destroy(other.gameObject);
             Debug.Log(shell.Points);
         }
