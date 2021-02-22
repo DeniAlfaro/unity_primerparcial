@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class HealthPotion : MonoBehaviour
 {
+    [SerializeField]
+    Potion potion;
 
+    private void OnTriggerEnter(Collider other) {
+        potion.Drink();
+        Debug.Log("Health Restored");
+        Destroy(gameObject);
+    }
 }

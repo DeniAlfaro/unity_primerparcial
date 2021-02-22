@@ -12,6 +12,6 @@ public class Potion : Consumable
 
     public override void Drink() {
         base.Drink();
-        Debug.Log("health restored");
+        Debug.Log("consumed");
     }
 }
