@@ -5,6 +5,6 @@ using UnityEngine;
 public class Consumable : Item
 {
     public virtual void Drink() {
-        Debug.Log("Drinking object");
+        Debug.Log("drinking object");
     }
 }
