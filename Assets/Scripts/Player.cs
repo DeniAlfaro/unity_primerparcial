@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     LayerMask groundLayer;
 
+    PlayerControls playerControls;
+
 
     //public GameOverScreen gameOverScreen;
 
@@ -35,12 +37,32 @@ public class Player : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
+        playerControls = new PlayerControls();
+    }
+
+    void Start()
+    {
+        playerControls.Gameplay.Jump.performed += ctx => Jump();
+    }
+
+    void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    void OnDisable()
+    {
+        playerControls.Disable();
     }
 
     void Update()
     {
-        transform.Translate(Vector2.right * axis.x * moveSpeed * Time.deltaTime);
-        if(jumpButton && IsGrounding)
+        transform.Translate(Vector2.right * axis.x * moveSpeed * Time.deltaTime); 
+    }
+
+    void Jump()
+    {
+        if(IsGrounding)
         {
             rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             anim.SetTrigger("jump");
@@ -61,11 +83,8 @@ public class Player : MonoBehaviour
         //anim.SetBool("grounding", IsGrounding);
     }
 
-    Vector2 axis => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
+    Vector2 axis => playerControls.Gameplay.Movement.ReadValue<Vector2>();
     bool flipSprite => axis.x > 0 ? false : axis.x < 0 ? true : spr.flipX;
-
-    bool jumpButton  => Input.GetButtonDown("Jump");
 
     bool IsGrounding => Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer); 
 
