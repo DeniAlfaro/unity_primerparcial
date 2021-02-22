@@ -6,18 +6,22 @@ using UnityEngine.UI;
 public class GameOverScreen : MonoBehaviour
 {
     [SerializeField]
-    Text pointsText;
-
-    int points = 0;
+    public Text pointsText;
 
     
+   
     public void SetUp(int score)
-    {
-        points += score;
-        pointsText.gameObject.SetActive(true);
-        pointsText.text = $"Score: {points} points";
+    {   
+        gameObject.SetActive(true);
+        //pointsText.gameObject.SetActive(true);
+        //pointsText.text = $"Score: {points} points";
+        pointsText.text = score.ToString() + "POINTS";
+        //pointsText.gameObject.SetActive(true);
+           // pointsText.text = score.ToString() + " POINTS";
+            //pointsText.text = $"Score: {score} points";
+            
+            //SetUp Canvas de GameOver
 
     }
 
-    
 }

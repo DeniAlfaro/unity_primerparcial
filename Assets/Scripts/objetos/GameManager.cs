@@ -13,20 +13,34 @@ public class GameManager : MonoBehaviour
     public Score Score { get => score; }
 
     //GAME OVER SCREEN
-    public GameOverScreen GameOverScreen;
-    int maxPlatform = 0;
 
-    public void GameOver()
-    {
-        
-        GameOverScreen.SetUp(maxPlatform);
+    public static bool gameOver;
 
-    }
+    public GameObject gameOverScreen;
+
+    //YOU WIN SCREEN
+    public static bool youWin;
+
+    public GameObject youWinScreen;
+    
     void Awake()
     {
-        
-            instance = this;       
+
+            instance = this; 
+            gameOver = false;
+            youWin = false;      
          
+    }
+
+     void Update() {
+        if(gameOver)
+        {
+            gameOverScreen.SetActive(true);
+        }
+        else if(youWin)
+        {
+            youWinScreen.SetActive(true);
+        }
     }
 
     public Score GetScore => score;

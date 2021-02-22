@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     LayerMask groundLayer;
 
 
-    public GameOverScreen gameOverScreen;
+    //public GameOverScreen gameOverScreen;
 
     void Awake()
     {
@@ -87,7 +87,13 @@ public class Player : MonoBehaviour
 
         if(other.CompareTag("Enemy"))
         {    
-             //GameOverScreen.SetUp();
+             GameManager.gameOver = true;
+            
+        }
+
+        if(other.CompareTag("Pearl"))
+        {    
+             GameManager.youWin = true;
         }
     }
 }
